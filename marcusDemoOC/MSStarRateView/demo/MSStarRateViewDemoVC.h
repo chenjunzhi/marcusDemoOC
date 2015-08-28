@@ -1,5 +1,5 @@
 //
-//  ViewController.h
+//  MSStarRateViewDemoVC.h
 //  marcusDemoOC
 //
 //  Created by marcus on 15/8/10.
@@ -7,11 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "UIViewController+BCMagicTransition.h"
 
-@interface ViewController : UIViewController<BCMagicTransitionProtocol>
-
-
+@interface MSStarRateViewDemoVC : UIViewController
 
 @end
-

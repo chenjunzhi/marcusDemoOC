@@ -12,6 +12,7 @@
 #import "MSToolsDemoVC.h"
 #import "MJNIndexDemoVC.h"
 #import "MSTestVC.h"
+#import "MSBarCodeViewController.h"
 
 @interface ViewController ()<UITableViewDataSource,UITableViewDelegate>
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
@@ -59,7 +60,12 @@
     NSDictionary *msTestVCDic = @{@"dispalyName":@"特殊动画跳转界面",@"controllerName":@"MSTestVC"};
     [_jumpArray addObject:msTestVCDic];
     
+//******* 扫描二维码条形码
+    NSDictionary *barCodeDic = @{@"dispalyName":@"扫描二维码条形码",@"controllerName":@"MSBarCodeViewController"};
+    [_jumpArray addObject:barCodeDic];
+    
     [self.tableView reloadData];
+    self.tableView.tableFooterView = [[UIView alloc]init];
 }
 
 
@@ -114,6 +120,8 @@
         
         [self pushViewController:secondVC fromViews:fromViews toViews:toViews duration:1.0];
         return;
+    }else if ([vcName isEqualToString:@"MSBarCodeViewController"]){
+        vc = [[MSBarCodeViewController alloc]init];
     }
     
 //    CATransition* transition = [CATransition animation];

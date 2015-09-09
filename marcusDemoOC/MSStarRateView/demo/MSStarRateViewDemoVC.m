@@ -23,7 +23,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.title = @"评论星星DEMO";
-    _starRateView = [[MSStarRateView alloc]initWithFrame:CGRectMake(0, 0, _starView.bounds.size.width, _starView.bounds.size.height) numberOfStars:5 foregroundImageName:@"icon_star_yellow.png" backgroundImageName:@"icon_star_gray.png"];
+    _starRateView = [[MSStarRateView alloc]initWithFrame:CGRectMake(0, 0, _starView.bounds.size.width, _starView.bounds.size.height) numberOfStars:5 foregroundImageName:@"star-on.png" backgroundImageName:@"star-off.png"];
 //    _starRateView = [[MSStarRateView alloc]initWithFrame:CGRectMake(0, 0, _starView.bounds.size.width, _starView.bounds.size.height) numberOfStars:5 ];
     _starRateView.scorePercent = 0.6;
     _gradeLabel.text = [NSString stringWithFormat:@"%.2f",0.6*5];

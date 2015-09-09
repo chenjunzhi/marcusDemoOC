@@ -7,6 +7,14 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		2C088FF11B9E8C4F00872A1D /* BCInteractiveTransition.m in Sources */ = {isa = PBXBuildFile; fileRef = 2C088FE81B9E8C4F00872A1D /* BCInteractiveTransition.m */; };
+		2C088FF21B9E8C4F00872A1D /* BCMagicTransition.m in Sources */ = {isa = PBXBuildFile; fileRef = 2C088FEA1B9E8C4F00872A1D /* BCMagicTransition.m */; };
+		2C088FF31B9E8C4F00872A1D /* UIViewController+BCMagicTransition.m in Sources */ = {isa = PBXBuildFile; fileRef = 2C088FEC1B9E8C4F00872A1D /* UIViewController+BCMagicTransition.m */; };
+		2C088FF41B9E8C4F00872A1D /* MSTestVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 2C088FEF1B9E8C4F00872A1D /* MSTestVC.m */; };
+		2C088FF51B9E8C4F00872A1D /* MSTestVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2C088FF01B9E8C4F00872A1D /* MSTestVC.xib */; };
+		2C088FFA1B9E8CFC00872A1D /* MSBarCodeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2C088FF81B9E8CFC00872A1D /* MSBarCodeViewController.m */; };
+		2C088FFB1B9E8CFC00872A1D /* MSBarCodeViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2C088FF91B9E8CFC00872A1D /* MSBarCodeViewController.xib */; };
+		2C13539C1B9ED98900540972 /* MSCycelScrollView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C13539B1B9ED98900540972 /* MSCycelScrollView.swift */; };
 		2C1C0B571B78761800BC2867 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 2C1C0B561B78761800BC2867 /* main.m */; };
 		2C1C0B5A1B78761800BC2867 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 2C1C0B591B78761800BC2867 /* AppDelegate.m */; };
 		2C1C0B5D1B78761800BC2867 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2C1C0B5C1B78761800BC2867 /* ViewController.m */; };
@@ -36,13 +44,6 @@
 		2C1C0C1A1B7896B200BC2867 /* MMUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C1C0C061B7896B200BC2867 /* MMUtils.swift */; };
 		2C1C0C1B1B7896B200BC2867 /* UIGestureRecognizer+MMExt.m in Sources */ = {isa = PBXBuildFile; fileRef = 2C1C0C091B7896B200BC2867 /* UIGestureRecognizer+MMExt.m */; };
 		2C1C0C1C1B7896B200BC2867 /* UINavigationController+MMExt.m in Sources */ = {isa = PBXBuildFile; fileRef = 2C1C0C0B1B7896B200BC2867 /* UINavigationController+MMExt.m */; };
-		2C1C0C211B789DAE00BC2867 /* icon_star_gray.png in Resources */ = {isa = PBXBuildFile; fileRef = 2C1C0C1F1B789DAE00BC2867 /* icon_star_gray.png */; };
-		2C1C0C221B789DAE00BC2867 /* icon_star_yellow.png in Resources */ = {isa = PBXBuildFile; fileRef = 2C1C0C201B789DAE00BC2867 /* icon_star_yellow.png */; };
-		2C91392A1B8DBCA000722EBA /* MSTestVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 2C9139281B8DBCA000722EBA /* MSTestVC.m */; };
-		2C91392B1B8DBCA000722EBA /* MSTestVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2C9139291B8DBCA000722EBA /* MSTestVC.xib */; };
-		2C9139341B8DBD6500722EBA /* BCInteractiveTransition.m in Sources */ = {isa = PBXBuildFile; fileRef = 2C91392F1B8DBD6500722EBA /* BCInteractiveTransition.m */; };
-		2C9139351B8DBD6500722EBA /* BCMagicTransition.m in Sources */ = {isa = PBXBuildFile; fileRef = 2C9139311B8DBD6500722EBA /* BCMagicTransition.m */; };
-		2C9139361B8DBD6500722EBA /* UIViewController+BCMagicTransition.m in Sources */ = {isa = PBXBuildFile; fileRef = 2C9139331B8DBD6500722EBA /* UIViewController+BCMagicTransition.m */; };
 		2CEF12D51B79A0F9004F87C0 /* ASDepthModalViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2CEF12D01B79A0F9004F87C0 /* ASDepthModalViewController.m */; };
 		2CEF12D61B79A0F9004F87C0 /* ASDepthModalDemoVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 2CEF12D31B79A0F9004F87C0 /* ASDepthModalDemoVC.m */; };
 		2CEF12D71B79A0F9004F87C0 /* ASDepthModalDemoVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2CEF12D41B79A0F9004F87C0 /* ASDepthModalDemoVC.xib */; };
@@ -66,6 +67,19 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		2C088FE71B9E8C4F00872A1D /* BCInteractiveTransition.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BCInteractiveTransition.h; sourceTree = "<group>"; };
+		2C088FE81B9E8C4F00872A1D /* BCInteractiveTransition.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BCInteractiveTransition.m; sourceTree = "<group>"; };
+		2C088FE91B9E8C4F00872A1D /* BCMagicTransition.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BCMagicTransition.h; sourceTree = "<group>"; };
+		2C088FEA1B9E8C4F00872A1D /* BCMagicTransition.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BCMagicTransition.m; sourceTree = "<group>"; };
+		2C088FEB1B9E8C4F00872A1D /* UIViewController+BCMagicTransition.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIViewController+BCMagicTransition.h"; sourceTree = "<group>"; };
+		2C088FEC1B9E8C4F00872A1D /* UIViewController+BCMagicTransition.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIViewController+BCMagicTransition.m"; sourceTree = "<group>"; };
+		2C088FEE1B9E8C4F00872A1D /* MSTestVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MSTestVC.h; sourceTree = "<group>"; };
+		2C088FEF1B9E8C4F00872A1D /* MSTestVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MSTestVC.m; sourceTree = "<group>"; };
+		2C088FF01B9E8C4F00872A1D /* MSTestVC.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MSTestVC.xib; sourceTree = "<group>"; };
+		2C088FF71B9E8CFC00872A1D /* MSBarCodeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MSBarCodeViewController.h; sourceTree = "<group>"; };
+		2C088FF81B9E8CFC00872A1D /* MSBarCodeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MSBarCodeViewController.m; sourceTree = "<group>"; };
+		2C088FF91B9E8CFC00872A1D /* MSBarCodeViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MSBarCodeViewController.xib; sourceTree = "<group>"; };
+		2C13539B1B9ED98900540972 /* MSCycelScrollView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MSCycelScrollView.swift; sourceTree = "<group>"; };
 		2C1C0B511B78761800BC2867 /* marcusDemoOC.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = marcusDemoOC.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		2C1C0B551B78761800BC2867 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		2C1C0B561B78761800BC2867 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -123,17 +137,6 @@
 		2C1C0C091B7896B200BC2867 /* UIGestureRecognizer+MMExt.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIGestureRecognizer+MMExt.m"; sourceTree = "<group>"; };
 		2C1C0C0A1B7896B200BC2867 /* UINavigationController+MMExt.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UINavigationController+MMExt.h"; sourceTree = "<group>"; };
 		2C1C0C0B1B7896B200BC2867 /* UINavigationController+MMExt.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UINavigationController+MMExt.m"; sourceTree = "<group>"; };
-		2C1C0C1F1B789DAE00BC2867 /* icon_star_gray.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon_star_gray.png; sourceTree = "<group>"; };
-		2C1C0C201B789DAE00BC2867 /* icon_star_yellow.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon_star_yellow.png; sourceTree = "<group>"; };
-		2C9139271B8DBCA000722EBA /* MSTestVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MSTestVC.h; path = ../MSTestVC.h; sourceTree = "<group>"; };
-		2C9139281B8DBCA000722EBA /* MSTestVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MSTestVC.m; path = ../MSTestVC.m; sourceTree = "<group>"; };
-		2C9139291B8DBCA000722EBA /* MSTestVC.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = MSTestVC.xib; path = ../MSTestVC.xib; sourceTree = "<group>"; };
-		2C91392E1B8DBD6500722EBA /* BCInteractiveTransition.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BCInteractiveTransition.h; sourceTree = "<group>"; };
-		2C91392F1B8DBD6500722EBA /* BCInteractiveTransition.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BCInteractiveTransition.m; sourceTree = "<group>"; };
-		2C9139301B8DBD6500722EBA /* BCMagicTransition.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BCMagicTransition.h; sourceTree = "<group>"; };
-		2C9139311B8DBD6500722EBA /* BCMagicTransition.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BCMagicTransition.m; sourceTree = "<group>"; };
-		2C9139321B8DBD6500722EBA /* UIViewController+BCMagicTransition.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIViewController+BCMagicTransition.h"; sourceTree = "<group>"; };
-		2C9139331B8DBD6500722EBA /* UIViewController+BCMagicTransition.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIViewController+BCMagicTransition.m"; sourceTree = "<group>"; };
 		2CEF12CF1B79A0F9004F87C0 /* ASDepthModalViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ASDepthModalViewController.h; sourceTree = "<group>"; };
 		2CEF12D01B79A0F9004F87C0 /* ASDepthModalViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ASDepthModalViewController.m; sourceTree = "<group>"; };
 		2CEF12D21B79A0F9004F87C0 /* ASDepthModalDemoVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ASDepthModalDemoVC.h; sourceTree = "<group>"; };
@@ -171,6 +174,56 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		2C088FE51B9E8C4F00872A1D /* BCMagicTransition */ = {
+			isa = PBXGroup;
+			children = (
+				2C088FE61B9E8C4F00872A1D /* core */,
+				2C088FED1B9E8C4F00872A1D /* demo */,
+			);
+			path = BCMagicTransition;
+			sourceTree = "<group>";
+		};
+		2C088FE61B9E8C4F00872A1D /* core */ = {
+			isa = PBXGroup;
+			children = (
+				2C088FE71B9E8C4F00872A1D /* BCInteractiveTransition.h */,
+				2C088FE81B9E8C4F00872A1D /* BCInteractiveTransition.m */,
+				2C088FE91B9E8C4F00872A1D /* BCMagicTransition.h */,
+				2C088FEA1B9E8C4F00872A1D /* BCMagicTransition.m */,
+				2C088FEB1B9E8C4F00872A1D /* UIViewController+BCMagicTransition.h */,
+				2C088FEC1B9E8C4F00872A1D /* UIViewController+BCMagicTransition.m */,
+			);
+			path = core;
+			sourceTree = "<group>";
+		};
+		2C088FED1B9E8C4F00872A1D /* demo */ = {
+			isa = PBXGroup;
+			children = (
+				2C088FEE1B9E8C4F00872A1D /* MSTestVC.h */,
+				2C088FEF1B9E8C4F00872A1D /* MSTestVC.m */,
+				2C088FF01B9E8C4F00872A1D /* MSTestVC.xib */,
+			);
+			path = demo;
+			sourceTree = "<group>";
+		};
+		2C088FF61B9E8CA900872A1D /* 扫描二维码条形码 */ = {
+			isa = PBXGroup;
+			children = (
+				2C088FF71B9E8CFC00872A1D /* MSBarCodeViewController.h */,
+				2C088FF81B9E8CFC00872A1D /* MSBarCodeViewController.m */,
+				2C088FF91B9E8CFC00872A1D /* MSBarCodeViewController.xib */,
+			);
+			path = "扫描二维码条形码";
+			sourceTree = "<group>";
+		};
+		2C13539A1B9ED96400540972 /* swiftComponent */ = {
+			isa = PBXGroup;
+			children = (
+				2C13539B1B9ED98900540972 /* MSCycelScrollView.swift */,
+			);
+			path = swiftComponent;
+			sourceTree = "<group>";
+		};
 		2C1C0B481B78761800BC2867 = {
 			isa = PBXGroup;
 			children = (
@@ -197,7 +250,9 @@
 				2C1C0B5B1B78761800BC2867 /* ViewController.h */,
 				2C1C0B5C1B78761800BC2867 /* ViewController.m */,
 				2C1C0B5E1B78761800BC2867 /* Main.storyboard */,
-				2C91392D1B8DBD6500722EBA /* BCMagicTransition */,
+				2C13539A1B9ED96400540972 /* swiftComponent */,
+				2C088FF61B9E8CA900872A1D /* 扫描二维码条形码 */,
+				2C088FE51B9E8C4F00872A1D /* BCMagicTransition */,
 				2CEF12CD1B79A0F9004F87C0 /* ASDepthModalViewController */,
 				2C1C0B7A1B78777200BC2867 /* MSStarRateView */,
 				2CEF12ED1B79A899004F87C0 /* MJNIndexView */,
@@ -252,8 +307,6 @@
 				2C1C0B8F1B78959000BC2867 /* MSStarRateViewDemoVC.h */,
 				2C1C0B901B78959000BC2867 /* MSStarRateViewDemoVC.m */,
 				2C1C0B911B78959000BC2867 /* MSStarRateViewDemoVC.xib */,
-				2C1C0C1F1B789DAE00BC2867 /* icon_star_gray.png */,
-				2C1C0C201B789DAE00BC2867 /* icon_star_yellow.png */,
 			);
 			name = demo;
 			sourceTree = "<group>";
@@ -359,38 +412,6 @@
 				2C1C0C0B1B7896B200BC2867 /* UINavigationController+MMExt.m */,
 			);
 			path = UIKit;
-			sourceTree = "<group>";
-		};
-		2C2464AE1B90A4FC009B219A /* core */ = {
-			isa = PBXGroup;
-			children = (
-				2C91392E1B8DBD6500722EBA /* BCInteractiveTransition.h */,
-				2C91392F1B8DBD6500722EBA /* BCInteractiveTransition.m */,
-				2C9139301B8DBD6500722EBA /* BCMagicTransition.h */,
-				2C9139311B8DBD6500722EBA /* BCMagicTransition.m */,
-				2C9139321B8DBD6500722EBA /* UIViewController+BCMagicTransition.h */,
-				2C9139331B8DBD6500722EBA /* UIViewController+BCMagicTransition.m */,
-			);
-			name = core;
-			sourceTree = "<group>";
-		};
-		2C2464AF1B90A510009B219A /* demo */ = {
-			isa = PBXGroup;
-			children = (
-				2C9139271B8DBCA000722EBA /* MSTestVC.h */,
-				2C9139281B8DBCA000722EBA /* MSTestVC.m */,
-				2C9139291B8DBCA000722EBA /* MSTestVC.xib */,
-			);
-			name = demo;
-			sourceTree = "<group>";
-		};
-		2C91392D1B8DBD6500722EBA /* BCMagicTransition */ = {
-			isa = PBXGroup;
-			children = (
-				2C2464AE1B90A4FC009B219A /* core */,
-				2C2464AF1B90A510009B219A /* demo */,
-			);
-			path = BCMagicTransition;
 			sourceTree = "<group>";
 		};
 		2CEF12CD1B79A0F9004F87C0 /* ASDepthModalViewController */ = {
@@ -571,15 +592,14 @@
 				2C1C0BA11B7895CC00BC2867 /* star-off.png in Resources */,
 				2CEF12F71B79A950004F87C0 /* MJNIndexDemoVC.xib in Resources */,
 				2C1C0B601B78761800BC2867 /* Main.storyboard in Resources */,
-				2C1C0C211B789DAE00BC2867 /* icon_star_gray.png in Resources */,
 				2CEF12EC1B79A42B004F87C0 /* fengjing.jpg in Resources */,
 				2C1C0B651B78761800BC2867 /* LaunchScreen.xib in Resources */,
+				2C088FFB1B9E8CFC00872A1D /* MSBarCodeViewController.xib in Resources */,
 				2C1C0BA21B7895CC00BC2867 /* star-on.png in Resources */,
 				2CEF12D71B79A0F9004F87C0 /* ASDepthModalDemoVC.xib in Resources */,
 				2CEF12EA1B79A3AB004F87C0 /* MSToolsDemoVC.xib in Resources */,
 				2C1C0B621B78761800BC2867 /* Images.xcassets in Resources */,
-				2C91392B1B8DBCA000722EBA /* MSTestVC.xib in Resources */,
-				2C1C0C221B789DAE00BC2867 /* icon_star_yellow.png in Resources */,
+				2C088FF51B9E8C4F00872A1D /* MSTestVC.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -600,13 +620,14 @@
 				2C1C0B921B78959000BC2867 /* MSStarRateViewDemoVC.m in Sources */,
 				2C1C0C181B7896B200BC2867 /* MMHandle.m in Sources */,
 				2C1C0BA01B7895CC00BC2867 /* MSStarRateVIew.m in Sources */,
+				2C088FFA1B9E8CFC00872A1D /* MSBarCodeViewController.m in Sources */,
 				2CEF12D61B79A0F9004F87C0 /* ASDepthModalDemoVC.m in Sources */,
 				2C1C0C0D1B7896B200BC2867 /* MMTag.m in Sources */,
 				2C1C0C171B7896B200BC2867 /* NSTimer+MMExt.m in Sources */,
+				2C088FF31B9E8C4F00872A1D /* UIViewController+BCMagicTransition.m in Sources */,
 				2CEF12F61B79A950004F87C0 /* MJNIndexDemoVC.m in Sources */,
 				2C1C0C141B7896B200BC2867 /* NSNumber+MMExt.m in Sources */,
 				2C1C0C101B7896B200BC2867 /* MMColorButton.swift in Sources */,
-				2C9139351B8DBD6500722EBA /* BCMagicTransition.m in Sources */,
 				2C1C0C121B7896B200BC2867 /* NSArray+MMExt.m in Sources */,
 				2CEF12F21B79A899004F87C0 /* MJNIndexView.m in Sources */,
 				2C1C0C131B7896B200BC2867 /* NSDictionary+MMExt.m in Sources */,
@@ -615,19 +636,20 @@
 				2C1C0B5D1B78761800BC2867 /* ViewController.m in Sources */,
 				2C1C0C161B7896B200BC2867 /* NSString+MMExt.m in Sources */,
 				2C1C0C1C1B7896B200BC2867 /* UINavigationController+MMExt.m in Sources */,
-				2C91392A1B8DBCA000722EBA /* MSTestVC.m in Sources */,
 				2C1C0C0F1B7896B200BC2867 /* MMTableViewHandle.m in Sources */,
 				2C1C0B5A1B78761800BC2867 /* AppDelegate.m in Sources */,
+				2C088FF21B9E8C4F00872A1D /* BCMagicTransition.m in Sources */,
+				2C13539C1B9ED98900540972 /* MSCycelScrollView.swift in Sources */,
+				2C088FF11B9E8C4F00872A1D /* BCInteractiveTransition.m in Sources */,
 				2CEF12E51B79A221004F87C0 /* MSTools.m in Sources */,
 				2CEF12D51B79A0F9004F87C0 /* ASDepthModalViewController.m in Sources */,
 				2CEF12E91B79A3AB004F87C0 /* MSToolsDemoVC.m in Sources */,
-				2C9139361B8DBD6500722EBA /* UIViewController+BCMagicTransition.m in Sources */,
 				2C1C0C1A1B7896B200BC2867 /* MMUtils.swift in Sources */,
-				2C9139341B8DBD6500722EBA /* BCInteractiveTransition.m in Sources */,
 				2C1C0C111B7896B200BC2867 /* MMCycelScrollView.swift in Sources */,
 				2C1C0C0C1B7896B200BC2867 /* MMBaseModel.m in Sources */,
 				2C1C0C0E1B7896B200BC2867 /* MMTable.m in Sources */,
 				2C1C0C1B1B7896B200BC2867 /* UIGestureRecognizer+MMExt.m in Sources */,
+				2C088FF41B9E8C4F00872A1D /* MSTestVC.m in Sources */,
 				2C1C0B571B78761800BC2867 /* main.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

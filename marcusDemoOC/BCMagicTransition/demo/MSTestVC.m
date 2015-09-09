@@ -9,6 +9,9 @@
 #import "MSTestVC.h"
 
 @interface MSTestVC ()
+@property (weak, nonatomic) IBOutlet UILabel *leftLabel;
+@property (weak, nonatomic) IBOutlet UILabel *centerLabel;
+@property (weak, nonatomic) IBOutlet UILabel *rightLabel;
 
 @end
 
@@ -16,6 +19,9 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    _leftLabel.text = @"In";
+    _centerLabel.text = @"Do any additional setup after loading the view from its nib";
+    _rightLabel.text = @"Passd any additional setup";
     // Do any additional setup after loading the view from its nib.
 }
 
@@ -23,6 +29,12 @@
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
+
+- (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event
+{
+    [self.view endEditing:YES];
+}
+
 
 /*
 #pragma mark - Navigation

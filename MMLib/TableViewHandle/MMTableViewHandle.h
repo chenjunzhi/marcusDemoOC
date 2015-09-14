@@ -16,7 +16,6 @@
 
 #import <UIKit/UIKit.h>
 #import "MMHandle.h"
-#import "MMTable.h"
 
 @class MMTableViewHandle;
 /**
@@ -71,6 +70,13 @@
  */
 - (void)tableHandle:(MMTableViewHandle *)tableHandle scrollDidScroll:(CGPoint)offset;
 /**
+ *  Responds to  UIScrollViewDelegate method, invoked in -[scrollViewWillBeginDragging:]
+ *
+ *  @param tableHandle tableViewHandle of tableView
+ *  @param offset      scroll contentOffset when start
+ */
+- (void)tableHandle:(MMTableViewHandle *)tableHandle scrollDidBeginScroll:(CGPoint)offset;
+/**
  *  Responds to  UIScrollViewDelegate method, invoked in -[scrollViewDidEndScrollingAnimation:] , -[scrollViewDidEndDecelerating:] or -[scrollViewDidEndDragging:willDecelerate:] when decelerate is NO.
  *
  *  @param tableHandle tableViewHandle of tableView
@@ -91,7 +97,7 @@ typedef void(^MMTableHandleScrollDeleagteBlock)(MMTableViewHandle *tableHandle, 
 typedef MMRow *(^MMTableHandleInsertRowBlock)(NSIndexPath *indexPath);
 typedef UIView *(^MMTableHandleAccessoryViewBlock)(NSIndexPath *indexPath);
 
-@class MMTableLimitSelectGroup;
+@class MMTableRowGroup, MMTableLimitSelectGroup;
 @interface MMTableViewHandle : MMHandle<UITableViewDelegate, UITableViewDataSource>
 @property (weak, nonatomic) id<MMTableViewHandleDelegate> delegate;
 @property (strong, nonatomic) UITableView *tableView;
@@ -281,6 +287,7 @@ typedef UIView *(^MMTableHandleAccessoryViewBlock)(NSIndexPath *indexPath);
 @property (copy, nonatomic) MMTableHandleCellDeleagteBlock cellDidDeletedBlock;
 @property (copy, nonatomic) MMTableHandleCellDeleagteBlock accessoryTappedBlock;
 @property (copy, nonatomic) MMTableHandleScrollDeleagteBlock scrollDidScrollBlock;
+@property (copy, nonatomic) MMTableHandleScrollDeleagteBlock scrollBeginScrollBlock;
 @property (copy, nonatomic) MMTableHandleScrollDeleagteBlock scrollStopScrollBlock;
 @end
 

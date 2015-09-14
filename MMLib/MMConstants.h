@@ -13,6 +13,8 @@
 #ifndef MMConstants_h
 #define MMConstants_h
 
+#import <Foundation/Foundation.h>
+
 // block type define
 typedef void (^MMBaseBlock)(void);
 typedef void(^MMResultBlock)(BOOL);

@@ -13,6 +13,9 @@
 #import "MJNIndexDemoVC.h"
 #import "MSTestVC.h"
 #import "MSBarCodeViewController.h"
+#import "SCRootViewController.h"
+#import "MMLib.h"
+#import "marcusDemoOC-swift.h"
 
 @interface ViewController ()<UITableViewDataSource,UITableViewDelegate>
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
@@ -26,7 +29,6 @@
     self.automaticallyAdjustsScrollViewInsets = NO;
     self.edgesForExtendedLayout = UIRectEdgeTop | UIRectEdgeBottom;
     self.title = @"功能集合";
-    
     [self initData];
     // Do any additional setup after loading the view, typically from a nib.
 }
@@ -64,6 +66,10 @@
     NSDictionary *barCodeDic = @{@"dispalyName":@"扫描二维码条形码",@"controllerName":@"MSBarCodeViewController"};
     [_jumpArray addObject:barCodeDic];
     
+//******* 多标签显示特效
+    NSDictionary *pageControllerCodeDic = @{@"dispalyName":@"多标签显示特效",@"controllerName":@"SCRootViewController"};
+    [_jumpArray addObject:pageControllerCodeDic];
+    
     [self.tableView reloadData];
     self.tableView.tableFooterView = [[UIView alloc]init];
 }
@@ -95,9 +101,6 @@
 }
 
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
-    
-
-    
     NSDictionary * dic = _jumpArray[indexPath.row];
     NSString * vcName = [dic objectForKey:@"controllerName"];
     UIViewController * vc;
@@ -122,6 +125,8 @@
         return;
     }else if ([vcName isEqualToString:@"MSBarCodeViewController"]){
         vc = [[MSBarCodeViewController alloc]init];
+    }else if ([vcName isEqualToString:@"SCRootViewController"]){
+        vc = [[SCRootViewController alloc]init];
     }
     
 //    CATransition* transition = [CATransition animation];

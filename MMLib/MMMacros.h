@@ -56,6 +56,8 @@
 #define MMCheckUsignNumberUnder(__index_, __limit_) MMCheckNumberInRange(__index_, 0, __limit_)
 #define MMCheckArrayInRange(__index_, __container_) MMCheckUsignNumberUnder(__index_, __container_.count)
 
+#define MMCheckOptionMask(__mask_, __op_)   ((__mask_ & __op_) == __op_)
+
 #define ScreenBounds   [UIScreen mainScreen].bounds
 #define ScreenWidth     [UIScreen mainScreen].bounds.size.width
 #define ScreenHeight    [UIScreen mainScreen].bounds.size.height

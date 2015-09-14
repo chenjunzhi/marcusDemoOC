@@ -71,13 +71,14 @@
     }
 }
 
-+ (BOOL)supportsSecureCoding 
++ (BOOL)supportsSecureCoding
 {
     return YES;
 }
 
 /**
  *  All codable properties for instance.
+ *
  *  @return Codable properties dictionary.
  */
 - (NSDictionary *)codableProperties
@@ -311,7 +312,14 @@
         {
             if (![value isKindOfClass:[NSNull class]])
             {
-                [self setValue:value forKeyPath:keyPath];
+                if ([value isKindOfClass:[NSDictionary class]] && propertyClass != [NSDictionary class] && [propertyClass conformsToProtocol:@protocol(MMJsonModel)])
+                {
+                    [self setValue:[propertyClass modelWithJsonDicUseSelfMap:value] forKeyPath:keyPath];
+                }
+                else
+                {
+                    [self setValue:value forKeyPath:keyPath];
+                }
             }
         }
         else

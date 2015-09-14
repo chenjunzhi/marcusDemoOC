@@ -8,8 +8,6 @@
 
 import UIKit
 
-import UIKit
-
 @IBDesignable class MSCycelScrollView: UIView, UIScrollViewDelegate {
     
     // MARK: Publick Properties

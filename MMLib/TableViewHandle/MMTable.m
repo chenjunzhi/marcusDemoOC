@@ -544,6 +544,11 @@ static char mmtableLimitSelectGroupLimitNumber;
 }
 
 #pragma mark setter & getter
+- (void)setRows:(NSSet *)rows
+{
+    super.rows = rows;
+    [_selectedRows removeAllObjects];
+}
 
 - (void)setSelectedRows:(NSMutableArray *)selectedRows
 {

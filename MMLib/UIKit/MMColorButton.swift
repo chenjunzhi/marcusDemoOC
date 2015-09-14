@@ -100,16 +100,13 @@ import UIKit
     
     override init(frame: CGRect) {
         super.init(frame: frame)
-        self.clipsToBounds = true
     }
     
     required init(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
-        self.clipsToBounds = true
     }
     
     override func prepareForInterfaceBuilder() {
-        self.clipsToBounds = true
     }
     
     convenience init(normalColor nor: UIColor, highlightColor high: UIColor?) {

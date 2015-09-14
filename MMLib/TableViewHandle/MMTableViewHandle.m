@@ -44,8 +44,9 @@ static char mmtableHanleProptySign;
 #pragma mark - MMTableViewHandle
 @interface MMTableViewHandle ()
 {
+    BOOL _scrollStopIgnoreDecelerate; // mark stop table scrolling with finger while decelerate, to make sure -[tableHandle:scrollDidStopScroll:] method will not be invoker in - [scrollViewDidEndDecelerating:]
     NSMutableSet *_notAllowSelectedRows; // record indexPaths of not allow click cells
-    NSMutableSet *_limitSelectRowsGroups;// record indexPaths of a multiple-pole switch cells  group
+    NSMutableSet *_limitSelectRowsGroups; // record indexPaths of a multiple-pole switch cells  group
     CGFloat _lastOffsetY; // record last offset when table view scrolling
     NSMutableDictionary *_deselectedTimers;
 }
@@ -1456,6 +1457,17 @@ static char mmtableHanleProptySign;
 }
 
 #pragma mark - UIScrollView Delegate
+- (void)scrollViewWillBeginDragging:(UIScrollView *)scrollView
+{
+    if (_scrollBeginScrollBlock)
+    {
+        _scrollBeginScrollBlock(self, scrollView.contentOffset);
+    }
+    if ([self _checkDelegate:@selector(tableHandle:scrollDidBeginScroll:)])
+    {
+        [self.delegate tableHandle:self scrollDidBeginScroll:scrollView.contentOffset];
+    }
+}
 
 - (void)scrollViewDidScroll:(UIScrollView *)scrollView
 {
@@ -1485,6 +1497,7 @@ static char mmtableHanleProptySign;
 {
     if (!decelerate)
     {
+        _scrollStopIgnoreDecelerate = YES;
         if (_scrollStopScrollBlock)
         {
             _scrollStopScrollBlock(self, scrollView.contentOffset);
@@ -1494,17 +1507,24 @@ static char mmtableHanleProptySign;
             [self.delegate tableHandle:self scrollDidStopScroll:scrollView.contentOffset];
         }
     }
+    else
+    {
+        _scrollStopIgnoreDecelerate = NO;
+    }
 }
 
 - (void)scrollViewDidEndDecelerating:(UIScrollView *)scrollView
 {
-    if (_scrollStopScrollBlock)
+    if (!_scrollStopIgnoreDecelerate)
     {
-        _scrollStopScrollBlock(self, scrollView.contentOffset);
-    }
-    if ([self _checkDelegate:@selector(tableHandle:scrollDidStopScroll:)])
-    {
-        [self.delegate tableHandle:self scrollDidStopScroll:scrollView.contentOffset];
+        if (_scrollStopScrollBlock)
+        {
+            _scrollStopScrollBlock(self, scrollView.contentOffset);
+        }
+        if ([self _checkDelegate:@selector(tableHandle:scrollDidStopScroll:)])
+        {
+            [self.delegate tableHandle:self scrollDidStopScroll:scrollView.contentOffset];
+        }
     }
 }
 

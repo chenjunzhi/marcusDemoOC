@@ -26,6 +26,8 @@
 		2C1C0BA01B7895CC00BC2867 /* MSStarRateVIew.m in Sources */ = {isa = PBXBuildFile; fileRef = 2C1C0B9D1B7895CC00BC2867 /* MSStarRateVIew.m */; };
 		2C1C0BA11B7895CC00BC2867 /* star-off.png in Resources */ = {isa = PBXBuildFile; fileRef = 2C1C0B9E1B7895CC00BC2867 /* star-off.png */; };
 		2C1C0BA21B7895CC00BC2867 /* star-on.png in Resources */ = {isa = PBXBuildFile; fileRef = 2C1C0B9F1B7895CC00BC2867 /* star-on.png */; };
+		2C1C4C991BA6B1B200762E51 /* MSCycelScrollViewVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 2C1C4C971BA6B1B200762E51 /* MSCycelScrollViewVC.m */; };
+		2C1C4C9A1BA6B1B200762E51 /* MSCycelScrollViewVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2C1C4C981BA6B1B200762E51 /* MSCycelScrollViewVC.xib */; };
 		2C851E3A1BA69F87006E76D7 /* MMBaseModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 2C851E141BA69F87006E76D7 /* MMBaseModel.m */; };
 		2C851E3B1BA69F87006E76D7 /* MMTag.m in Sources */ = {isa = PBXBuildFile; fileRef = 2C851E171BA69F87006E76D7 /* MMTag.m */; };
 		2C851E3C1BA69F87006E76D7 /* MMTable.m in Sources */ = {isa = PBXBuildFile; fileRef = 2C851E1A1BA69F87006E76D7 /* MMTable.m */; };
@@ -116,6 +118,9 @@
 		2C1C0B9D1B7895CC00BC2867 /* MSStarRateVIew.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MSStarRateVIew.m; path = MSStarRateView/core/MSStarRateVIew.m; sourceTree = "<group>"; };
 		2C1C0B9E1B7895CC00BC2867 /* star-off.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "star-off.png"; path = "MSStarRateView/core/star-off.png"; sourceTree = "<group>"; };
 		2C1C0B9F1B7895CC00BC2867 /* star-on.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "star-on.png"; path = "MSStarRateView/core/star-on.png"; sourceTree = "<group>"; };
+		2C1C4C961BA6B1B200762E51 /* MSCycelScrollViewVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MSCycelScrollViewVC.h; sourceTree = "<group>"; };
+		2C1C4C971BA6B1B200762E51 /* MSCycelScrollViewVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MSCycelScrollViewVC.m; sourceTree = "<group>"; };
+		2C1C4C981BA6B1B200762E51 /* MSCycelScrollViewVC.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MSCycelScrollViewVC.xib; sourceTree = "<group>"; };
 		2C851E0E1BA69F87006E76D7 /* MMConstants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MMConstants.h; sourceTree = "<group>"; };
 		2C851E0F1BA69F87006E76D7 /* MMLib.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MMLib.h; sourceTree = "<group>"; };
 		2C851E101BA69F87006E76D7 /* MMMacros.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MMMacros.h; sourceTree = "<group>"; };
@@ -290,6 +295,7 @@
 				2C1C0B5B1B78761800BC2867 /* ViewController.h */,
 				2C1C0B5C1B78761800BC2867 /* ViewController.m */,
 				2C1C0B5E1B78761800BC2867 /* Main.storyboard */,
+				2C1C4C951BA6B18500762E51 /* cycelScrollView */,
 				2CFF28B41BA01BBF00430A06 /* safariPages */,
 				2C088FF61B9E8CA900872A1D /* 扫描二维码条形码 */,
 				2C088FE51B9E8C4F00872A1D /* BCMagicTransition */,
@@ -359,6 +365,32 @@
 				2C1C0B9F1B7895CC00BC2867 /* star-on.png */,
 			);
 			name = core;
+			sourceTree = "<group>";
+		};
+		2C1C4C951BA6B18500762E51 /* cycelScrollView */ = {
+			isa = PBXGroup;
+			children = (
+				2C1C4C9D1BA6B1E700762E51 /* demo */,
+				2C1C4C9B1BA6B1D100762E51 /* image */,
+			);
+			path = cycelScrollView;
+			sourceTree = "<group>";
+		};
+		2C1C4C9B1BA6B1D100762E51 /* image */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = image;
+			sourceTree = "<group>";
+		};
+		2C1C4C9D1BA6B1E700762E51 /* demo */ = {
+			isa = PBXGroup;
+			children = (
+				2C1C4C961BA6B1B200762E51 /* MSCycelScrollViewVC.h */,
+				2C1C4C971BA6B1B200762E51 /* MSCycelScrollViewVC.m */,
+				2C1C4C981BA6B1B200762E51 /* MSCycelScrollViewVC.xib */,
+			);
+			name = demo;
 			sourceTree = "<group>";
 		};
 		2C851E0D1BA69F87006E76D7 /* MMLib */ = {
@@ -676,6 +708,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2C1C4C9A1BA6B1B200762E51 /* MSCycelScrollViewVC.xib in Resources */,
 				2C1C0B931B78959000BC2867 /* MSStarRateViewDemoVC.xib in Resources */,
 				2CFF28C91BA01BBF00430A06 /* SCSafariPageWrapperViewController.xib in Resources */,
 				2CFF28CE1BA01BBF00430A06 /* SCRootViewController.xib in Resources */,
@@ -728,6 +761,7 @@
 				2C851E4B1BA69F87006E76D7 /* UINavigationController+MMExt.m in Sources */,
 				2CEF12F21B79A899004F87C0 /* MJNIndexView.m in Sources */,
 				2C851E4A1BA69F87006E76D7 /* UIGestureRecognizer+MMExt.m in Sources */,
+				2C1C4C991BA6B1B200762E51 /* MSCycelScrollViewVC.m in Sources */,
 				2CFF28C71BA01BBF00430A06 /* SCSafariPageController.m in Sources */,
 				2CFF28C81BA01BBF00430A06 /* SCSafariPageWrapperViewController.m in Sources */,
 				2C1C0B5D1B78761800BC2867 /* ViewController.m in Sources */,

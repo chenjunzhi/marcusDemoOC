@@ -11,6 +11,31 @@
 
 #import "ASDepthModalDemoVC.h"
 #import "ASDepthModalViewController.h"
+#import "MSStarRateViewDemoVC.h"
+
+
+@interface danli : NSObject
+
+@property (strong, nonatomic) UIViewController * vc;
+
++ (instancetype)shared;
+@end
+
+@implementation danli
+
++ (instancetype)shared
+{
+    static danli * d;
+    static dispatch_once_t onceToken;
+    dispatch_once(&onceToken, ^{
+        d = [[danli alloc] init];
+    });
+    return d;
+}
+
+@end
+
+
 
 @interface ASDepthModalDemoVC ()
 
@@ -37,12 +62,17 @@
     
 }
 - (IBAction)showViewBottom:(UIButton *)sender {
-    UIView * view = [[UIView alloc]initWithFrame:CGRectMake(0, 0, kWidth, 120)];
+    UIView * view = [[UIView alloc]initWithFrame:CGRectMake(0, 0, kWidth, 400)];
     view.backgroundColor = [UIColor whiteColor];
     UILabel * label = [[UILabel alloc]initWithFrame:CGRectMake(0, 50, 100, 21)];
     label.text = @"底部弹出";
     [view addSubview:label];
-    [ASDepthModalViewController presentView:view withBackgroundColor:nil popupAnimationStyle:ASDepthModalAnimationBottomPopue];
+    MSStarRateViewDemoVC * vc = [[MSStarRateViewDemoVC alloc]init];
+    vc.view.frame = CGRectMake(0, 0, kWidth, 400);
+    danli * d = [danli shared];
+    d.vc = vc;
+    
+    [ASDepthModalViewController presentView:vc.view withBackgroundColor:nil popupAnimationStyle:ASDepthModalAnimationBottomPopue];
 }
 
 - (IBAction)showViewRight:(UIButton *)sender {

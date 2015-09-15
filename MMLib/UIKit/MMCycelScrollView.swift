@@ -61,6 +61,8 @@ import UIKit
             controlView.currentPageIndicatorTintColor = pageControlTintColor
         }
     }
+    //scrollAnimation 特殊滚动动画
+    @IBInspectable var scrollAnimation : Bool = false
     /// how many page of MMCycelScrollView
     var pageNumbers : NSInteger = 0 {
         didSet {
@@ -232,7 +234,11 @@ import UIKit
         if let block = viewOfPageBlock {
             for index in 0...2 {
                 let view = block(index: validIndexFromIndex(currentPage+(index-1)))
-                view.frame = CGRect(index*self.width, 0, self.width, self.height)
+                if scrollAnimation {
+                    
+                }else{
+                   view.frame = CGRect(index*self.width, 0, self.width, self.height)
+                }
                 currentViews.append(view)
                 contentView .addSubview(view)
 
@@ -279,6 +285,7 @@ import UIKit
     dynamic internal func scrollViewDidEndDecelerating(scrollView: UIScrollView) {
         scrollView.setContentOffset(CGPoint(self.width, 0), animated: true)
     }
+    
     
 // MARK: - Publick Methods
     /**

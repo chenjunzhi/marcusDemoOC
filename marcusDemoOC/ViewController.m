@@ -15,7 +15,7 @@
 #import "MSBarCodeViewController.h"
 #import "SCRootViewController.h"
 #import "MMLib.h"
-#import "marcusDemoOC-swift.h"
+#import "MSCycelScrollViewVC.h"
 
 @interface ViewController ()<UITableViewDataSource,UITableViewDelegate>
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
@@ -69,6 +69,10 @@
 //******* 多标签显示特效
     NSDictionary *pageControllerCodeDic = @{@"dispalyName":@"多标签显示特效",@"controllerName":@"SCRootViewController"};
     [_jumpArray addObject:pageControllerCodeDic];
+    
+//****** 循环滚动视图
+    NSDictionary *scrollViewDic = @{@"dispalyName":@"循环滚动视图",@"controllerName":@"MSCycelScrollViewVC"};
+    [_jumpArray addObject:scrollViewDic];
     
     [self.tableView reloadData];
     self.tableView.tableFooterView = [[UIView alloc]init];
@@ -127,8 +131,9 @@
         vc = [[MSBarCodeViewController alloc]init];
     }else if ([vcName isEqualToString:@"SCRootViewController"]){
         vc = [[SCRootViewController alloc]init];
+    }else if ([vcName isEqualToString:@"MSCycelScrollViewVC"]){
+        vc = [[MSCycelScrollViewVC alloc]init];
     }
-    
 //    CATransition* transition = [CATransition animation];
 //    transition.duration = 0.3;
 //    transition.type = kCATransitionFade;//可更改为其他方式

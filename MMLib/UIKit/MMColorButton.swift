@@ -12,21 +12,47 @@
 //
 
 import UIKit
+
+
+public struct MMColorButtonEdgeCorner : OptionSetType {
+    private let _rawValue : UInt
+    public init(rawValue: UInt) { _rawValue = rawValue }
+    public var rawValue: UInt { get { return _rawValue} }
+    
+    public static var TopLeft: MMColorButtonEdgeCorner { get { return self.init(rawValue: 1 << 0) } }
+    public static var TopRight: MMColorButtonEdgeCorner { get { return self.init(rawValue: 1 << 1) } }
+    public static var BottomLeft: MMColorButtonEdgeCorner { get { return self.init(rawValue: 1 << 2) } }
+    public static var BottomRight: MMColorButtonEdgeCorner { get { return self.init(rawValue: 1 << 3) } }
+    public static var AllCorners: MMColorButtonEdgeCorner { get { return self.init(rawValue: 0xF) } }
+}
+
 @IBDesignable class MMColorButton: UIButton {
     /// nomal background color
-    @IBInspectable var normalColor: UIColor = UIColor.clearColor() {
+    @IBInspectable var normalColor : UIColor = UIColor.clearColor() {
         didSet{
             self.setNeedsDisplay()
         }
     }
     /// highlight background color
-    @IBInspectable var highlightColor: UIColor? {
+    @IBInspectable var highlightColor :  UIColor? {
+        didSet{
+            self.setNeedsDisplay()
+        }
+    }
+    /// disabled backgroud color
+    @IBInspectable var disableColor : UIColor? {
+        didSet{
+            self.setNeedsDisplay()
+        }
+    }
+    /// selected backgroud color
+    @IBInspectable var selectedColor : UIColor? {
         didSet{
             self.setNeedsDisplay()
         }
     }
     /// show solid line border or cut line border
-    @IBInspectable var isShowCutLine : Bool = false {
+    @IBInspectable var showCutLine : Bool = false {
         didSet {
             self.setNeedsDisplay()
         }
@@ -37,8 +63,44 @@ import UIKit
             self.setNeedsDisplay()
         }
     }
+    ///  highlight solid line border color
+    @IBInspectable var highlightBorderColor : UIColor? {
+        didSet {
+            self.setNeedsDisplay()
+        }
+    }
+    /// disable solid line border color
+    @IBInspectable var disableBorderColor : UIColor? {
+        didSet {
+            self.setNeedsDisplay()
+        }
+    }
+    /// selected solid line border color
+    @IBInspectable var selectedBorderColor : UIColor? {
+        didSet {
+            self.setNeedsDisplay()
+        }
+    }
     /// cut line border color, use borderColor if cutLineBorderColor is nil
-    @IBInspectable var cutLineBorderColor : UIColor? {
+    @IBInspectable var cutLineColor : UIColor? {
+        didSet {
+            self.setNeedsDisplay()
+        }
+    }
+    /// highlti cut line border color
+    @IBInspectable var highlightCutLineColor : UIColor? {
+        didSet {
+            self.setNeedsDisplay()
+        }
+    }
+    /// disbale cut line border color
+    @IBInspectable var disableCutLineColor : UIColor? {
+        didSet {
+            self.setNeedsDisplay()
+        }
+    }
+    /// selected cut line border color
+    @IBInspectable var selectedCutLineColor : UIColor? {
         didSet {
             self.setNeedsDisplay()
         }
@@ -64,45 +126,112 @@ import UIKit
     /// The radius to use when drawing rounded corners for the layer’s background. Animatable.
     @IBInspectable var radius : CGFloat = 0 {
         didSet {
-            if radius > 0 {
-                self.layer.cornerRadius = radius
-            }
             self.setNeedsDisplay()
         }
     }
-    
-    override var highlighted: Bool {
+    /// The mask value that identifies the corners that you want rounded. You can use this parameter to round only a subset of the corners of the rectangle. Default is ALLCorners
+    var edgeCornerType : MMColorButtonEdgeCorner = .AllCorners {
         didSet {
-            borderColor = borderColor.colorWithAlphaComponent(highlighted ? 0.5 : 1)
-            cutLineBorderColor = cutLineBorderColor?.colorWithAlphaComponent(highlighted ? 0.5 : 1)
+            self.setNeedsDisplay()
         }
+    }
+    /**
+     API for OC to set edgeCornerType, because of OC cant use swift OptionSetType
+     
+     - parameter type: Type of MMColorButtonEdgeCorner, use MMColorButtonEdgeMaskForOC enum in OC
+     */
+    func setEdgeCornerTypeForOC(type: UInt) {
+        edgeCornerType = MMColorButtonEdgeCorner(rawValue: type)
+    }
+    
+    // MARK: - override handle
+    override var highlighted : Bool {
+        willSet{
+            if highlighted != newValue {
+                self.setNeedsDisplay()
+            }
+        }
+    }
+    
+    override var selected : Bool {
+        willSet{
+            if selected != newValue {
+                self.setNeedsDisplay()
+            }
+        }
+    }
+    
+    override var enabled : Bool {
+        willSet{
+            if enabled != newValue {
+                self.setNeedsDisplay()
+            }
+        }
+    }
+    
+    override var backgroundColor : UIColor? {
+        didSet {
+            super.backgroundColor = nil
+        }
+    }
+    
+    override func setBackgroundImage(image: UIImage?, forState state: UIControlState) {
+        super.setBackgroundImage(nil, forState: state)
     }
     
     override func drawRect(rect: CGRect) {
         let context = UIGraphicsGetCurrentContext()
-        CGContextSetStrokeColorWithColor(context, (isShowCutLine && cutLineBorderColor != nil) ? cutLineBorderColor!.CGColor : borderColor.CGColor)
-        CGContextSetFillColorWithColor(context, (highlighted && highlightColor != nil) ? highlightColor!.CGColor : normalColor.CGColor)
+        // set fill color and stroke color depends on state of button
+        let strokeColor : UIColor
+        let fillColor : UIColor
+        if self.state.contains(.Disabled) {
+            // show cutline disable color when showCutline setted ture. if disableCutLineColor is nil, cutLineColor instead. Or use borderColor instead while nil
+            strokeColor = showCutLine ? (disableCutLineColor ?? (cutLineColor ?? borderColor)) : (disableBorderColor ?? borderColor)
+            fillColor = disableColor ?? normalColor
+        } else if self.state.contains(.Highlighted) {
+            // show cutline highlight color when showCutline setted ture. if highlightCutLineColor is nil, cutLineColor instead. Or use borderColor instead while nil
+            strokeColor = showCutLine ? (highlightCutLineColor ?? (cutLineColor ?? borderColor)) : (highlightBorderColor ?? borderColor)
+            fillColor = highlightColor ?? normalColor
+        } else if self.state.contains(.Selected) {
+            // show cutline selected color when showCutline setted ture. if selectedCutLineColor is nil, cutLineColor instead. Or use borderColor instead while nil
+            strokeColor = showCutLine ? (selectedCutLineColor ?? (cutLineColor ?? borderColor)) : (selectedBorderColor ?? borderColor)
+            fillColor = selectedColor ?? normalColor
+        } else {
+            strokeColor = showCutLine ? (cutLineColor ?? borderColor) : borderColor
+            fillColor = normalColor
+        }
+        
+        CGContextSetStrokeColorWithColor(context, strokeColor.CGColor)
+        CGContextSetFillColorWithColor(context, fillColor.CGColor)
         CGContextSetLineWidth(context, borderWidth)
-        if isShowCutLine {
+        if showCutLine {
             CGContextSetLineDash(context, 0, [lineSolidLength, lineCutLength], 2)
         }
-        CGContextMoveToPoint(context, 0, radius)
-        CGContextAddArcToPoint(context, 0, 0, radius, 0, radius)
-        CGContextAddLineToPoint(context, self.width-radius, 0)
-        CGContextAddArcToPoint(context, self.width, 0, self.width, radius, radius)
-        CGContextAddLineToPoint(context, self.width, self.height-radius)
-        CGContextAddArcToPoint(context, self.width, self.height, self.width-radius, self.height, radius)
-        CGContextAddLineToPoint(context, radius, self.height)
-        CGContextAddArcToPoint(context, 0, self.height, 0, self.height-radius, radius)
-        CGContextClosePath(context)
-        CGContextDrawPath(context, kCGPathFillStroke);
+        
+        let fixInsetWidth = borderWidth / 2.0
+        let fixTangentPoint = radius + fixInsetWidth
+        func fixRadius(type : MMColorButtonEdgeCorner) -> CGFloat {
+            return edgeCornerType.contains(type) ? fixTangentPoint : fixInsetWidth
+        }
+        
+        CGContextMoveToPoint(context, fixInsetWidth, fixRadius(.TopLeft))
+        if edgeCornerType.contains(.TopLeft) { CGContextAddArcToPoint(context, fixInsetWidth, fixInsetWidth, fixTangentPoint, fixInsetWidth, radius) }
+        CGContextAddLineToPoint(context, self.width-fixRadius(.TopRight), fixInsetWidth)
+        if edgeCornerType.contains(.TopRight) { CGContextAddArcToPoint(context, self.width-fixInsetWidth, fixInsetWidth, self.width-fixInsetWidth, fixTangentPoint, radius) }
+        CGContextAddLineToPoint(context, self.width-fixInsetWidth, self.height-fixRadius(.BottomRight))
+        if edgeCornerType.contains(.BottomRight) { CGContextAddArcToPoint(context, self.width-fixInsetWidth, self.height-fixInsetWidth, self.width-fixTangentPoint, self.height-fixInsetWidth, radius) }
+        CGContextAddLineToPoint(context, fixRadius(.BottomLeft), self.height-fixInsetWidth)
+        if edgeCornerType.contains(.BottomLeft) { CGContextAddArcToPoint(context, fixInsetWidth, self.height-fixInsetWidth, fixInsetWidth, self.height-fixTangentPoint, radius) }
+        CGContextAddLineToPoint(context, fixInsetWidth, fixRadius(.TopLeft))
+        CGContextDrawPath(context, .FillStroke);
     }
     
+    //MARK: - init
     override init(frame: CGRect) {
         super.init(frame: frame)
     }
     
-    required init(coder aDecoder: NSCoder) {
+    required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
     }
     
@@ -146,7 +275,7 @@ import UIKit
         }
     }
     
-    override func animationDidStop(anim: CAAnimation!, finished flag: Bool) {
+    override func animationDidStop(anim: CAAnimation, finished flag: Bool) {
         if let transform = anim as? CABasicAnimation where transform.keyPath == "transform" {
             animateStepIndex++
             self.sharkAnimate()

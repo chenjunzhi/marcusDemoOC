@@ -77,10 +77,10 @@ func /(lhs: CGFloat, rhs: Double) -> CGFloat {return lhs / CGFloat(rhs)}
 
 // CGPoint, CGSize, CGRect
 func +(lhs: CGPoint, rhs: CGPoint) -> CGPoint {return CGPoint(x: lhs.x + rhs.x, y: lhs.y + rhs.y)}
-func +(lhs: CGRect, rhs: CGRect) -> CGRect {return lhs.rectByUnion(rhs)}
+func +(lhs: CGRect, rhs: CGRect) -> CGRect {return lhs.union(rhs)}
 
 func -(lhs: CGPoint, rhs: CGPoint) -> CGPoint {return CGPoint(x: lhs.x - rhs.x, y: lhs.y - rhs.y)}
-func -(lhs: CGRect, rhs: CGRect) -> CGRect {return lhs.rectByIntersecting(rhs)}
+func -(lhs: CGRect, rhs: CGRect) -> CGRect {return lhs.intersect(rhs)}
 
 func *(lhs: CGPoint, rhs: CGFloat) -> CGPoint {return CGPoint(x: lhs.x * rhs, y: lhs.y * rhs)}
 func *(lhs: CGSize, rhs: CGFloat) -> CGSize {return CGSize(width: lhs.width * rhs, height: lhs.height * rhs)}
@@ -89,10 +89,10 @@ func *(lhs: CGRect, rhs: CGFloat) -> CGRect {return CGRect(origin: lhs.origin * 
 func /(lhs: CGSize, rhs: CGSize) -> CGFloat {return sqrt(lhs.area / rhs.area)} // 两个Size的比例
 
 func +=(inout lhs: CGPoint, rhs: CGPoint) {lhs.x += rhs.x; lhs.y += rhs.y}
-func +=(inout lhs: CGRect, rhs: CGRect) {lhs.union(rhs)}
+func +=(inout lhs: CGRect, rhs: CGRect) {lhs.unionInPlace(rhs)}
 
 func -=(inout lhs: CGPoint, rhs: CGPoint) {lhs.x -= rhs.x; lhs.y -= rhs.y}
-func -=(inout lhs: CGRect, rhs: CGRect) {lhs.intersect(rhs)}
+func -=(inout lhs: CGRect, rhs: CGRect) {lhs.intersectInPlace(rhs)}
 
 func *=(inout lhs: CGPoint, rhs: CGFloat) {lhs.x *= rhs; lhs.y *= rhs}
 func *=(inout lhs: CGSize, rhs: CGFloat) {lhs.width *= rhs; lhs.height *= rhs}
@@ -105,10 +105,42 @@ func |-|(lhs: UIView, rhs: UIView) -> CGFloat {return lhs.center |-| rhs.center}
 
 
 // MARK: - Top level function
-//func MMLog()
+/**
+格式化LOG
 
-
-func screenBounds() -> CGRect {return UIScreen.mainScreen().bounds}
+- parameter items:  输出内容
+- parameter file:   所在文件
+- parameter method: 所在方法
+- parameter line:   所在行
+*/
+func MMLog(items: Any... ,
+    file: String = __FILE__,
+    method: String = __FUNCTION__,
+    line: Int = __LINE__) {
+    #if DEBUG
+        let formatter = NSDateFormatter()
+        formatter.dateFormat = "YYYY-MM-dd hh:mm:ss.SSS"
+        var itemStr = ""
+        for item in items {
+            if let str = item as? String {
+                itemStr += str
+            } else {
+                itemStr += "\(item)"
+            }
+        }
+        print("-------------------------- MMLOG --------------------------\n[" + formatter.stringFromDate(NSDate()) + "] <" + (file as NSString).lastPathComponent + ":" + method + "  inLine:\(line)>\n" + itemStr)
+    #endif
+}
+/**
+ 输出标记
+ */
+func Mark( file: String = __FILE__,
+    method: String = __FUNCTION__,
+    line: Int = __LINE__) {
+    MMLog("- MARK -", file: file, method: method, line: line)
+}
+/// 屏幕尺寸
+var screenBounds : CGRect {return UIScreen.mainScreen().bounds}
 // 判断屏幕尺寸
 func screenIsSize(size: Float) -> Bool {
     switch size {
@@ -117,9 +149,9 @@ func screenIsSize(size: Float) -> Bool {
     case 4.0:
         return UIScreen.mainScreen().bounds.size == CGSize(320, 568)
     case 4.7:
-        return UIScreen.mainScreen().bounds.size == CGSize(750, 1334)
+        return UIScreen.mainScreen().bounds.size == CGSize(375, 667)
     case 5.5:
-        return UIScreen.mainScreen().bounds.size == CGSize(1080, 1920)
+        return UIScreen.mainScreen().bounds.size == CGSize(414, 736)
     default:
         return false
     }
@@ -129,19 +161,19 @@ func systemVersionLater(version: String) -> Bool {return UIDevice.currentDevice(
 // 获取当前控制器
 func getCurrentViewController() -> UIViewController? {
     var result: UIViewController?
-    var topWindow = UIApplication.sharedApplication().keyWindow
+    let topWindow = UIApplication.sharedApplication().keyWindow
     if topWindow?.windowLevel != UIWindowLevelNormal {
         for topWindow in UIApplication.sharedApplication().windows{
-            if (topWindow as! UIWindow).windowLevel == UIWindowLevelNormal {
+            if topWindow.windowLevel == UIWindowLevelNormal {
                 break
             }
         }
     }
     var nextRespons: AnyObject?
     if systemVersionLater("8.0") {
-        nextRespons = ((topWindow?.subviews[0] as! UIView).subviews[0] as! UIView).nextResponder()
+        nextRespons = topWindow?.subviews[0].subviews[0].nextResponder()
     } else {
-        nextRespons = (topWindow?.subviews[0] as! UIView).nextResponder()
+        nextRespons = topWindow?.subviews[0].nextResponder()
     }
     
     if nextRespons is UIViewController {
@@ -172,7 +204,7 @@ extension CGPoint {
     init(_ x: Double, _ y: Double) {self.init(x: x, y: y)}
     
     // 距目标point的 距离
-    func distanceTo(#point: CGPoint) -> CGFloat {return sqrt(pow(x - point.x, 2) + pow(y - point.y, 2))}
+    func distanceTo(point point: CGPoint) -> CGFloat {return sqrt(pow(x - point.x, 2) + pow(y - point.y, 2))}
     // 减去一个point/ 目标point指向自身的向量
     func pointBySub(subPoint: CGPoint) -> CGPoint {return CGPoint(x: x - subPoint.x, y: y - subPoint.y)}
     mutating func sub(subPoint: CGPoint) {x -= subPoint.x; y -= subPoint.y}
@@ -226,13 +258,59 @@ extension CGRect {
     // 移动rect
     func rectByMoveBy(point: CGPoint) -> CGRect {return CGRect(origin: origin + point, size: size)}
     mutating func moveBy(point: CGPoint) {origin += point}
-    func rectByMoveTo(#center: CGPoint) -> CGRect {return CGRect(center: center, size: size)}
-    mutating func moveTo(#center: CGPoint) {origin = center - CGPoint(x: size.width/2, y: size.height/2)}
+    func rectByMoveTo(center center: CGPoint) -> CGRect {return CGRect(center: center, size: size)}
+    mutating func moveTo(center center: CGPoint) {origin = center - CGPoint(x: size.width/2, y: size.height/2)}
     //比例放大
     func rectByScale(scale: CGFloat) -> CGRect {return CGRect(origin: origin * scale, size: size * scale)}
     mutating func scale(scale: CGFloat) {origin *= scale; size *= scale}
 }
 
+// MARK: - Foundation 扩展
+// MARK: String
+extension String {
+    func rangeFromNSRange(nsRange : NSRange) -> Range<String.Index>? {
+        let from16 = utf16.startIndex.advancedBy(nsRange.location, limit: utf16.endIndex)
+        let to16 = from16.advancedBy(nsRange.length, limit: utf16.endIndex)
+        if let from = String.Index(from16, within: self),
+            let to = String.Index(to16, within: self) {
+                return from ..< to
+        }
+        return nil
+    }
+    
+    func NSRangeFromRange(range : Range<String.Index>) -> NSRange {
+        let utf16view = self.utf16
+        let from = String.UTF16View.Index(range.startIndex, within: utf16view)
+        let to = String.UTF16View.Index(range.endIndex, within: utf16view)
+        return NSMakeRange(utf16view.startIndex.distanceTo(from), from.distanceTo(to))
+    }
+    
+    func calculateWidthWith(fontSize: CGFloat, heightLimit height: CGFloat, otherAttribute otherAttr: [String: AnyObject]?) -> CGFloat {
+        var attr : [String: AnyObject] = [NSFontAttributeName: UIFont.systemFontOfSize(fontSize)]
+        if let otherAttr_ = otherAttr {
+            for (key, value) in otherAttr_ {
+                attr[key] = value
+            }
+        }
+        return (self as NSString).boundingRectWithSize(CGSize(CGFloat(MAXFLOAT), height), options: [.UsesLineFragmentOrigin, .UsesFontLeading], attributes: attr, context: nil).width
+    }
+    
+    func calculateHeightWith(fontSize: CGFloat, widthLimit width: CGFloat, otherAttribute otherAttr: [String: AnyObject]?) -> CGFloat {
+        var attr : [String: AnyObject] = [NSFontAttributeName: UIFont.systemFontOfSize(fontSize)]
+        if let otherAttr_ = otherAttr {
+            for (key, value) in otherAttr_ {
+                attr[key] = value
+            }
+        }
+        return (self as NSString).boundingRectWithSize(CGSize(width, CGFloat(MAXFLOAT)), options: [.UsesLineFragmentOrigin, .UsesFontLeading], attributes: attr, context: nil).height
+    }
+}
+
+extension Double {
+    func format(f: String) -> String {
+    return String(format: "%\(f)f", self)
+    }
+}
 
 // MARK: - UIKit类 扩展
 // MARK: UIView

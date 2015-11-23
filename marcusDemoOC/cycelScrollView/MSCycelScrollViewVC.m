@@ -23,7 +23,7 @@
     _mmCycelScrollView.isUseLayoutConstraints = NO;
     _mmCycelScrollView.frame = CGRectMake(0, 100, ScreenWidth, 100);
     _mmCycelScrollView.pageNumbers = 5;
-    _mmCycelScrollView.scrollAnimation = YES;
+//    _mmCycelScrollView.scrollAnimation = YES;
     [self.view addSubview:_mmCycelScrollView];
     _mmCycelScrollView.viewOfPageBlock = ^UIView*(NSInteger index) {
         UIView *view = [[UIView alloc] initWithFrame:CGRectMake(0, 100, ScreenWidth, 100)];

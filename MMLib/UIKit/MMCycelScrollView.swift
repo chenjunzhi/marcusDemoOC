@@ -20,16 +20,16 @@ import UIKit
         didSet {
             if isUseLayoutConstraints != oldValue {
                 if isUseLayoutConstraints {
-                    anchorView.setTranslatesAutoresizingMaskIntoConstraints(false)
-                    scrollView.setTranslatesAutoresizingMaskIntoConstraints(false)
-                    contentView.setTranslatesAutoresizingMaskIntoConstraints(false)
-                    controlView.setTranslatesAutoresizingMaskIntoConstraints(false)
+                    anchorView.translatesAutoresizingMaskIntoConstraints = false
+                    scrollView.translatesAutoresizingMaskIntoConstraints = false
+                    contentView.translatesAutoresizingMaskIntoConstraints = false
+                    controlView.translatesAutoresizingMaskIntoConstraints = false
                     self.addConstraints(selfConstraints)
                 } else {
-                    anchorView.setTranslatesAutoresizingMaskIntoConstraints(true)
-                    scrollView.setTranslatesAutoresizingMaskIntoConstraints(true)
-                    contentView.setTranslatesAutoresizingMaskIntoConstraints(true)
-                    controlView.setTranslatesAutoresizingMaskIntoConstraints(true)
+                    anchorView.translatesAutoresizingMaskIntoConstraints = true
+                    scrollView.translatesAutoresizingMaskIntoConstraints = true
+                    contentView.translatesAutoresizingMaskIntoConstraints = true
+                    controlView.translatesAutoresizingMaskIntoConstraints = true
                     self.removeConstraints(selfConstraints)
                 }
             }
@@ -47,27 +47,53 @@ import UIKit
             }
         }
     }
+    
     /// Auto scroll timeInterval,  TimeInterval between scroll a page and next, default 2.
-    @IBInspectable var autoScrollInterval : NSTimeInterval = 2
-    /// PageContoler normal color
+    @IBInspectable var autoScrollInterval : Double = 2 {
+        didSet {
+            if autoRunTimer.valid {
+                autoRunTimer.invalidate()
+                autoRunTimer = NSTimer.scheduledTimerWithTimeInterval(autoScrollInterval, target: self, selector: "handleTimer", userInfo: nil, repeats: true)
+            }
+        }
+    }
+    /// If false, scroll can not drag to switch index
+    @IBInspectable var manualScroll : Bool = true {
+        didSet {
+            scrollView.scrollEnabled = manualScroll
+        }
+    }
+    /// pageControler alignment,  0 means center,  negative number means left margin,  positive number means right margin. Default 0.
+    @IBInspectable var pageControlAlignment : CGFloat = 0 {
+        didSet {
+            controlView.frame = creatPageControllerAlignmentRect()
+            if isUseLayoutConstraints {
+                self.removeConstraint(controlAlignmentConstraint!)
+                controlAlignmentConstraint = creatPageControllerAlignmentConstraint()
+                selfConstraints.removeLast()
+                selfConstraints.append(controlAlignmentConstraint!)
+                self.addConstraint(controlAlignmentConstraint!)
+            }
+        }
+    }
+    /// PageControler normal color
     @IBInspectable var pageControlColor : UIColor = UIColor(colorCode: 0xCCCCCC) {
         didSet {
             controlView.pageIndicatorTintColor = pageControlColor
         }
     }
-    /// PageContoler selected color, default white.
+    /// PageControler selected color, default white.
     @IBInspectable var pageControlTintColor : UIColor = UIColor.whiteColor() {
         didSet {
             controlView.currentPageIndicatorTintColor = pageControlTintColor
         }
     }
-    //scrollAnimation 特殊滚动动画
-    @IBInspectable var scrollAnimation : Bool = false
     /// how many page of MMCycelScrollView
     var pageNumbers : NSInteger = 0 {
         didSet {
             controlView.numberOfPages = pageNumbers
             controlView.hidden = pageNumbers <= 1
+            controlView.frame = creatPageControllerAlignmentRect()
         }
     }
     /// current page for view
@@ -98,7 +124,7 @@ import UIKit
         self.privateInit()
     }
     
-    required init(coder aDecoder: NSCoder) {
+    required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
         self.privateInit()
     }
@@ -122,26 +148,28 @@ import UIKit
             scrollView.contentSize = CGSize(3*frame.width, frame.height)
             scrollView.contentOffset = CGPoint(frame.width, 0)
             contentView.frame = CGRect(origin: CGPointZero, size: CGSize(3*frame.width, frame.height))
-            controlView.frame = CGRect(0, frame.height - 30, frame.width, 30)
+            controlView.frame = creatPageControllerAlignmentRect()
             for index in 0..<currentViews.count {
                 let view = currentViews[index]
                 view.frame = CGRect(index*frame.width, 0, frame.width, frame.height)
             }
         }
     }
- 
+    
 // MARK: - private
     private let anchorView = UIView()
     private let scrollView = UIScrollView()
     private let contentView = UIView()
     private let controlView = UIPageControl()
-    private var selfConstraints : [AnyObject] = []
-
+    private var selfConstraints : [NSLayoutConstraint] = []
+    private var controlAlignmentConstraint : NSLayoutConstraint?
+    
     private var currentViews : [UIView] = []
     private var cViewConstraints : [NSLayoutConstraint] = []
     
     private var autoRunTimer = NSTimer()
     
+// MARK: init
     private func privateInit() {
         initAnchor()
         initScroll()
@@ -164,6 +192,7 @@ import UIKit
         scrollView.bounces = false
         scrollView.showsHorizontalScrollIndicator = false
         scrollView.showsVerticalScrollIndicator = false
+        scrollView.scrollEnabled = manualScroll
         self.addSubview(scrollView)
         
         contentView.backgroundColor = UIColor.clearColor()
@@ -173,7 +202,7 @@ import UIKit
     }
     
     private func initControl() {
-        controlView.frame = CGRect(0, self.height - 30, self.width, 30)
+        controlView.frame = creatPageControllerAlignmentRect()
         controlView.pageIndicatorTintColor = pageControlColor
         controlView.currentPageIndicatorTintColor = pageControlTintColor
         controlView.userInteractionEnabled = false
@@ -189,23 +218,28 @@ import UIKit
         let Hcontent = NSLayoutConstraint.constraintsWithVisualFormat("H:|[content]|", options: NSLayoutFormatOptions.DirectionMask, metrics: nil, views: views)
         let contentHeight = NSLayoutConstraint(item: contentView, attribute: .Width, relatedBy: .Equal, toItem: anchorView, attribute: .Width, multiplier: 3.0, constant: 0)
         let Vcontent = NSLayoutConstraint.constraintsWithVisualFormat("V:|[content(anchor)]|", options: NSLayoutFormatOptions.DirectionMask, metrics: nil, views: views)
-        let Hcontrol = NSLayoutConstraint.constraintsWithVisualFormat("H:|[control]|", options: NSLayoutFormatOptions.DirectionMask, metrics: nil, views: views)
         let Vcontrol = NSLayoutConstraint.constraintsWithVisualFormat("V:[control(30)]|", options: NSLayoutFormatOptions.DirectionMask, metrics: nil, views: views)
+        let Wcontrol = NSLayoutConstraint(item: controlView, attribute: .Width, relatedBy: .GreaterThanOrEqual, toItem: nil, attribute: .NotAnAttribute, multiplier: 1, constant: 0)
+        controlAlignmentConstraint = creatPageControllerAlignmentConstraint()
         
 // MARK: 数组连加不能太长，否则会编辑报错
         selfConstraints += Hanchor + Vanchor
         selfConstraints += Hscroll + Vscroll
         selfConstraints += Hcontent + Vcontent
         selfConstraints += [contentHeight]
-        selfConstraints += Hcontrol + Vcontrol
+        selfConstraints += Vcontrol + [Wcontrol]
+        selfConstraints.append(controlAlignmentConstraint!)
     }
 
     dynamic internal override func willMoveToSuperview(newSuperview: UIView?) {
         if let _ = newSuperview where autoScroll && !autoRunTimer.valid {
             autoRunTimer = NSTimer.scheduledTimerWithTimeInterval(autoScrollInterval, target: self, selector: "handleTimer", userInfo: nil, repeats: true)
+        } else if autoRunTimer.valid {
+            autoRunTimer.invalidate()
         }
     }
     
+// MARK: Utils
     private func validIndexFromIndex(index: NSInteger) -> NSInteger {
         if index >= pageNumbers {
             return 0
@@ -214,6 +248,37 @@ import UIKit
         } else {
             return index
         }
+    }
+    
+    private func creatPageControllerAlignmentRect() -> CGRect {
+        var rect = CGRect.zero
+        let controllerWidth = controlView.sizeForNumberOfPages(pageNumbers).width
+        switch pageControlAlignment {
+        case 0:
+            rect = CGRect(0, self.height - 30, self.width, 30)
+        case let nega where nega < 0:
+            rect = CGRect(-pageControlAlignment, self.height - 30, controllerWidth, CGFloat(30))
+        case let posi where posi > 0:
+            rect = CGRect(self.width-pageControlAlignment-controllerWidth, self.height - 30, controllerWidth, CGFloat(30))
+        default:
+            break
+        }
+        return rect
+    }
+    
+    private func creatPageControllerAlignmentConstraint() -> NSLayoutConstraint {
+        var constraint = NSLayoutConstraint()
+        switch pageControlAlignment {
+        case 0:
+            constraint = NSLayoutConstraint(item: controlView, attribute: .CenterX, relatedBy: .Equal, toItem: self, attribute: .CenterX, multiplier: 1, constant: 0)
+        case let nega where nega < 0:
+            constraint = NSLayoutConstraint(item: self, attribute: .Leading, relatedBy: .Equal, toItem: controlView, attribute: .Leading, multiplier: 1, constant: nega)
+        case let posi where posi > 0:
+            constraint = NSLayoutConstraint(item: self, attribute: .Trailing, relatedBy: .Equal, toItem: controlView, attribute: .Trailing, multiplier: 1, constant: posi)
+        default:
+            break
+        }
+        return constraint
     }
     
     private func reloadViews() {
@@ -234,16 +299,12 @@ import UIKit
         if let block = viewOfPageBlock {
             for index in 0...2 {
                 let view = block(index: validIndexFromIndex(currentPage+(index-1)))
-                if scrollAnimation {
-                    
-                }else{
-                   view.frame = CGRect(index*self.width, 0, self.width, self.height)
-                }
+                view.frame = CGRect(index*self.width, 0, self.width, self.height)
                 currentViews.append(view)
                 contentView .addSubview(view)
 
                 if isUseLayoutConstraints {
-                    view.setTranslatesAutoresizingMaskIntoConstraints(false)
+                    view.translatesAutoresizingMaskIntoConstraints = false
                     
                     let left = NSLayoutConstraint(item: view, attribute: .Leading, relatedBy: .Equal, toItem: index == 0 ? contentView : currentViews[index-1], attribute: index == 0 ? .Leading : .Trailing, multiplier: 1, constant: 0)
                     let centerY = NSLayoutConstraint(item: contentView, attribute: .CenterY, relatedBy: .Equal, toItem: view, attribute: .CenterY, multiplier: 1, constant: 0)
@@ -285,7 +346,6 @@ import UIKit
     dynamic internal func scrollViewDidEndDecelerating(scrollView: UIScrollView) {
         scrollView.setContentOffset(CGPoint(self.width, 0), animated: true)
     }
-    
     
 // MARK: - Publick Methods
     /**

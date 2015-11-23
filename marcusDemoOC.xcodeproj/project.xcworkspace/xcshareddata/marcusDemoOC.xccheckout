@@ -7,14 +7,14 @@
 	<key>IDESourceControlProjectIdentifier</key>
 	<string>315F249C-2897-42BB-9D0B-9CF81A26B313</string>
 	<key>IDESourceControlProjectName</key>
-	<string>marcusDemoOC</string>
+	<string>project</string>
 	<key>IDESourceControlProjectOriginsDictionary</key>
 	<dict>
 		<key>FCA7969F5484D829AB2BE6EA20068E41A99EF1D8</key>
 		<string>https://github.com/chenjunzhi/marcusDemoOC.git</string>
 	</dict>
 	<key>IDESourceControlProjectPath</key>
-	<string>marcusDemoOC.xcodeproj</string>
+	<string>marcusDemoOC.xcodeproj/project.xcworkspace</string>
 	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
 	<dict>
 		<key>FCA7969F5484D829AB2BE6EA20068E41A99EF1D8</key>

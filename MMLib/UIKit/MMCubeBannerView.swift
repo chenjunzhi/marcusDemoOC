@@ -15,12 +15,12 @@ import UIKit
         didSet {
             if isUseLayoutConstraints != oldValue {
                 if isUseLayoutConstraints {
-                    contentView.setTranslatesAutoresizingMaskIntoConstraints(false)
-                    controlView.setTranslatesAutoresizingMaskIntoConstraints(false)
+                    contentView.translatesAutoresizingMaskIntoConstraints = false
+                    controlView.translatesAutoresizingMaskIntoConstraints = false
                     self.addConstraints(selfConstraints)
                 } else {
-                    contentView.setTranslatesAutoresizingMaskIntoConstraints(true)
-                    controlView.setTranslatesAutoresizingMaskIntoConstraints(true)
+                    contentView.translatesAutoresizingMaskIntoConstraints = true
+                    controlView.translatesAutoresizingMaskIntoConstraints = true
                     self.removeConstraints(selfConstraints)
                 }
             }
@@ -91,7 +91,7 @@ import UIKit
         self.privateInit()
     }
     
-    required init(coder aDecoder: NSCoder) {
+    required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
         self.privateInit()
     }
@@ -123,10 +123,10 @@ import UIKit
     // MARK: - private
     private let contentView = UIView()
     private let controlView = UIPageControl()
-    private var selfConstraints : [AnyObject] = []
+    private var selfConstraints : [NSLayoutConstraint] = []
     
     private var currentViews : [UIView] = []
-    private var cViewConstraints : [AnyObject] = []
+    private var cViewConstraints : [NSLayoutConstraint] = []
     
     private var autoRunTimer = NSTimer()
     
@@ -264,7 +264,7 @@ import UIKit
                 contentView.addSubview(view)
                 
                 if isUseLayoutConstraints {
-                    view.setTranslatesAutoresizingMaskIntoConstraints(false)
+                    view.translatesAutoresizingMaskIntoConstraints = false
                     let H = NSLayoutConstraint.constraintsWithVisualFormat("H:|[view]|", options: NSLayoutFormatOptions.DirectionMask, metrics: nil, views: ["view": view])
                     let V = NSLayoutConstraint.constraintsWithVisualFormat("V:|[view]|", options: NSLayoutFormatOptions.DirectionMask, metrics: nil, views: ["view": view])
                     cViewConstraints += H + V
@@ -275,7 +275,7 @@ import UIKit
     }
     
     //  MARK: - CAAnimation Delegate
-    override func animationDidStop(anim: CAAnimation!, finished flag: Bool) {
+    override func animationDidStop(anim: CAAnimation, finished flag: Bool) {
         turning = false
     }
     

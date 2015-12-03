@@ -18,4 +18,7 @@
                    withRadius:(CGFloat)blurRadius;
 
 
+/****** 计算字符串的像素长度 ******/
++(CGFloat)iStringLength:(NSString *)str font:(UIFont *)font;
+
 @end

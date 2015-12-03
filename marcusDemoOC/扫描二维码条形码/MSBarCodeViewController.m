@@ -17,6 +17,7 @@
 {
     AVCaptureSession * session;//输入输出的中间桥梁
 }
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *d;
 @property (weak, nonatomic) IBOutlet UILabel *numberCodeLabel;
 @end
 

@@ -104,4 +104,19 @@ CGRect  CGRectWithScale(CGRect rect, CGFloat scale)
     
     return returnImage;
 }
+
+/****** 计算字符串的像素长度 ******/
++(CGFloat)iStringLength:(NSString *)str font:(UIFont *)font
+{
+    CGSize strsize = CGSizeMake(2000, 25);
+    //计算实际frame大小，并将label的frame变成实际大小
+    CGSize labelsize = [str boundingRectWithSize:strsize options:NSStringDrawingTruncatesLastVisibleLine attributes:@{NSFontAttributeName: font} context:nil].size;
+    
+    //        CGSize size = [str sizeWithFont:font constrainedToSize:CGSizeMake(180.0f, 20000.0f) lineBreakMode:NSLineBreakByWordWrapping];
+    
+    //    - (CGSize)sizeWithFont:(UIFont *)font constrainedToSize:(CGSize)size NS_DEPRECATED_IOS(2_0, 7_0, "Use -boundingRectWithSize:options:attributes:context:"); // Uses NSLineBreakModeWordWrap
+    
+    return labelsize.width;
+}
+
 @end

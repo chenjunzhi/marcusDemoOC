@@ -28,6 +28,18 @@
 		2C1C0BA21B7895CC00BC2867 /* star-on.png in Resources */ = {isa = PBXBuildFile; fileRef = 2C1C0B9F1B7895CC00BC2867 /* star-on.png */; };
 		2C1C4C991BA6B1B200762E51 /* MSCycelScrollViewVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 2C1C4C971BA6B1B200762E51 /* MSCycelScrollViewVC.m */; };
 		2C1C4C9A1BA6B1B200762E51 /* MSCycelScrollViewVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2C1C4C981BA6B1B200762E51 /* MSCycelScrollViewVC.xib */; };
+		2C7333B01C0E9130006F4072 /* THSpecificationCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 2C7333AE1C0E9130006F4072 /* THSpecificationCell.m */; };
+		2C7333B11C0E9130006F4072 /* THSpecificationCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2C7333AF1C0E9130006F4072 /* THSpecificationCell.xib */; };
+		2C7333B41C0EC1B3006F4072 /* THSpecificationLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = 2C7333B31C0EC1B3006F4072 /* THSpecificationLayout.m */; };
+		2C74228F1C0FDED100239736 /* THSpecificationHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2C74228D1C0FDED100239736 /* THSpecificationHeaderView.m */; };
+		2C7422901C0FDED100239736 /* THSpecificationHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2C74228E1C0FDED100239736 /* THSpecificationHeaderView.xib */; };
+		2C7422941C0FDF8A00239736 /* THSpecificationFooterView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2C7422921C0FDF8A00239736 /* THSpecificationFooterView.m */; };
+		2C7422951C0FDF8A00239736 /* THSpecificationFooterView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2C7422931C0FDF8A00239736 /* THSpecificationFooterView.xib */; };
+		2C7422991C0FE4C200239736 /* THSpecificationCountView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2C7422971C0FE4C200239736 /* THSpecificationCountView.m */; };
+		2C74229A1C0FE4C200239736 /* THSpecificationCountView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2C7422981C0FE4C200239736 /* THSpecificationCountView.xib */; };
+		2C752E141C0D70FC00325160 /* THSpecificationVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 2C752E121C0D70FC00325160 /* THSpecificationVC.m */; };
+		2C752E151C0D70FC00325160 /* THSpecificationVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2C752E131C0D70FC00325160 /* THSpecificationVC.xib */; };
+		2C752E181C0DA4AA00325160 /* THSpecificationModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 2C752E171C0DA4AA00325160 /* THSpecificationModel.m */; };
 		2C851E3A1BA69F87006E76D7 /* MMBaseModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 2C851E141BA69F87006E76D7 /* MMBaseModel.m */; };
 		2C851E3B1BA69F87006E76D7 /* MMTag.m in Sources */ = {isa = PBXBuildFile; fileRef = 2C851E171BA69F87006E76D7 /* MMTag.m */; };
 		2C851E3C1BA69F87006E76D7 /* MMTable.m in Sources */ = {isa = PBXBuildFile; fileRef = 2C851E1A1BA69F87006E76D7 /* MMTable.m */; };
@@ -121,6 +133,25 @@
 		2C1C4C961BA6B1B200762E51 /* MSCycelScrollViewVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MSCycelScrollViewVC.h; sourceTree = "<group>"; };
 		2C1C4C971BA6B1B200762E51 /* MSCycelScrollViewVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MSCycelScrollViewVC.m; sourceTree = "<group>"; };
 		2C1C4C981BA6B1B200762E51 /* MSCycelScrollViewVC.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MSCycelScrollViewVC.xib; sourceTree = "<group>"; };
+		2C7333AD1C0E9130006F4072 /* THSpecificationCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = THSpecificationCell.h; sourceTree = "<group>"; };
+		2C7333AE1C0E9130006F4072 /* THSpecificationCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = THSpecificationCell.m; sourceTree = "<group>"; };
+		2C7333AF1C0E9130006F4072 /* THSpecificationCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = THSpecificationCell.xib; sourceTree = "<group>"; };
+		2C7333B21C0EC1B3006F4072 /* THSpecificationLayout.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = THSpecificationLayout.h; sourceTree = "<group>"; };
+		2C7333B31C0EC1B3006F4072 /* THSpecificationLayout.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = THSpecificationLayout.m; sourceTree = "<group>"; };
+		2C74228C1C0FDED100239736 /* THSpecificationHeaderView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = THSpecificationHeaderView.h; sourceTree = "<group>"; };
+		2C74228D1C0FDED100239736 /* THSpecificationHeaderView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = THSpecificationHeaderView.m; sourceTree = "<group>"; };
+		2C74228E1C0FDED100239736 /* THSpecificationHeaderView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = THSpecificationHeaderView.xib; sourceTree = "<group>"; };
+		2C7422911C0FDF8A00239736 /* THSpecificationFooterView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = THSpecificationFooterView.h; sourceTree = "<group>"; };
+		2C7422921C0FDF8A00239736 /* THSpecificationFooterView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = THSpecificationFooterView.m; sourceTree = "<group>"; };
+		2C7422931C0FDF8A00239736 /* THSpecificationFooterView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = THSpecificationFooterView.xib; sourceTree = "<group>"; };
+		2C7422961C0FE4C200239736 /* THSpecificationCountView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = THSpecificationCountView.h; sourceTree = "<group>"; };
+		2C7422971C0FE4C200239736 /* THSpecificationCountView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = THSpecificationCountView.m; sourceTree = "<group>"; };
+		2C7422981C0FE4C200239736 /* THSpecificationCountView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = THSpecificationCountView.xib; sourceTree = "<group>"; };
+		2C752E111C0D70FC00325160 /* THSpecificationVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = THSpecificationVC.h; sourceTree = "<group>"; };
+		2C752E121C0D70FC00325160 /* THSpecificationVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = THSpecificationVC.m; sourceTree = "<group>"; };
+		2C752E131C0D70FC00325160 /* THSpecificationVC.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = THSpecificationVC.xib; sourceTree = "<group>"; };
+		2C752E161C0DA4AA00325160 /* THSpecificationModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = THSpecificationModel.h; sourceTree = "<group>"; };
+		2C752E171C0DA4AA00325160 /* THSpecificationModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = THSpecificationModel.m; sourceTree = "<group>"; };
 		2C851E0E1BA69F87006E76D7 /* MMConstants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MMConstants.h; sourceTree = "<group>"; };
 		2C851E0F1BA69F87006E76D7 /* MMLib.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MMLib.h; sourceTree = "<group>"; };
 		2C851E101BA69F87006E76D7 /* MMMacros.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MMMacros.h; sourceTree = "<group>"; };
@@ -295,6 +326,7 @@
 				2C1C0B5B1B78761800BC2867 /* ViewController.h */,
 				2C1C0B5C1B78761800BC2867 /* ViewController.m */,
 				2C1C0B5E1B78761800BC2867 /* Main.storyboard */,
+				2C752E101C0D704A00325160 /* UICollectionView */,
 				2C1C4C951BA6B18500762E51 /* cycelScrollView */,
 				2CFF28B41BA01BBF00430A06 /* safariPages */,
 				2C088FF61B9E8CA900872A1D /* 扫描二维码条形码 */,
@@ -391,6 +423,32 @@
 				2C1C4C981BA6B1B200762E51 /* MSCycelScrollViewVC.xib */,
 			);
 			name = demo;
+			sourceTree = "<group>";
+		};
+		2C752E101C0D704A00325160 /* UICollectionView */ = {
+			isa = PBXGroup;
+			children = (
+				2C74228C1C0FDED100239736 /* THSpecificationHeaderView.h */,
+				2C74228D1C0FDED100239736 /* THSpecificationHeaderView.m */,
+				2C74228E1C0FDED100239736 /* THSpecificationHeaderView.xib */,
+				2C7422911C0FDF8A00239736 /* THSpecificationFooterView.h */,
+				2C7422921C0FDF8A00239736 /* THSpecificationFooterView.m */,
+				2C7422931C0FDF8A00239736 /* THSpecificationFooterView.xib */,
+				2C7422961C0FE4C200239736 /* THSpecificationCountView.h */,
+				2C7422971C0FE4C200239736 /* THSpecificationCountView.m */,
+				2C7422981C0FE4C200239736 /* THSpecificationCountView.xib */,
+				2C7333AD1C0E9130006F4072 /* THSpecificationCell.h */,
+				2C7333AE1C0E9130006F4072 /* THSpecificationCell.m */,
+				2C7333AF1C0E9130006F4072 /* THSpecificationCell.xib */,
+				2C752E161C0DA4AA00325160 /* THSpecificationModel.h */,
+				2C752E171C0DA4AA00325160 /* THSpecificationModel.m */,
+				2C752E111C0D70FC00325160 /* THSpecificationVC.h */,
+				2C752E121C0D70FC00325160 /* THSpecificationVC.m */,
+				2C752E131C0D70FC00325160 /* THSpecificationVC.xib */,
+				2C7333B21C0EC1B3006F4072 /* THSpecificationLayout.h */,
+				2C7333B31C0EC1B3006F4072 /* THSpecificationLayout.m */,
+			);
+			name = UICollectionView;
 			sourceTree = "<group>";
 		};
 		2C851E0D1BA69F87006E76D7 /* MMLib */ = {
@@ -716,17 +774,22 @@
 				2CFF28CE1BA01BBF00430A06 /* SCRootViewController.xib in Resources */,
 				2C1C0BA11B7895CC00BC2867 /* star-off.png in Resources */,
 				2CEF12F71B79A950004F87C0 /* MJNIndexDemoVC.xib in Resources */,
+				2C7422951C0FDF8A00239736 /* THSpecificationFooterView.xib in Resources */,
 				2C1C0B601B78761800BC2867 /* Main.storyboard in Resources */,
+				2C7333B11C0E9130006F4072 /* THSpecificationCell.xib in Resources */,
 				2CEF12EC1B79A42B004F87C0 /* fengjing.jpg in Resources */,
 				2CFF28CC1BA01BBF00430A06 /* feathers.jpg in Resources */,
 				2C1C0B651B78761800BC2867 /* LaunchScreen.xib in Resources */,
+				2C752E151C0D70FC00325160 /* THSpecificationVC.xib in Resources */,
 				2C088FFB1B9E8CFC00872A1D /* MSBarCodeViewController.xib in Resources */,
 				2C1C0BA21B7895CC00BC2867 /* star-on.png in Resources */,
 				2CEF12D71B79A0F9004F87C0 /* ASDepthModalDemoVC.xib in Resources */,
+				2C74229A1C0FE4C200239736 /* THSpecificationCountView.xib in Resources */,
 				2CEF12EA1B79A3AB004F87C0 /* MSToolsDemoVC.xib in Resources */,
 				2C1C0B621B78761800BC2867 /* Images.xcassets in Resources */,
 				2CFF28D01BA01BBF00430A06 /* SCViewController.xib in Resources */,
 				2C088FF51B9E8C4F00872A1D /* MSTestVC.xib in Resources */,
+				2C7422901C0FDED100239736 /* THSpecificationHeaderView.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -744,9 +807,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2C7422991C0FE4C200239736 /* THSpecificationCountView.m in Sources */,
 				2C1C0B921B78959000BC2867 /* MSStarRateViewDemoVC.m in Sources */,
 				2CFF28CD1BA01BBF00430A06 /* SCRootViewController.m in Sources */,
 				2C851E3A1BA69F87006E76D7 /* MMBaseModel.m in Sources */,
+				2C7422941C0FDF8A00239736 /* THSpecificationFooterView.m in Sources */,
+				2C752E181C0DA4AA00325160 /* THSpecificationModel.m in Sources */,
 				2C851E471BA69F87006E76D7 /* MMHandle.m in Sources */,
 				2C1C0BA01B7895CC00BC2867 /* MSStarRateVIew.m in Sources */,
 				2C088FFA1B9E8CFC00872A1D /* MSBarCodeViewController.m in Sources */,
@@ -756,6 +822,7 @@
 				2CFF28E61BA0222D00430A06 /* SCScrollView.m in Sources */,
 				2CFF28CB1BA01BBF00430A06 /* SCSafariZoomedOutLayouter.m in Sources */,
 				2C088FF31B9E8C4F00872A1D /* UIViewController+BCMagicTransition.m in Sources */,
+				2C7333B41C0EC1B3006F4072 /* THSpecificationLayout.m in Sources */,
 				2CEF12F61B79A950004F87C0 /* MJNIndexDemoVC.m in Sources */,
 				2C851E491BA69F87006E76D7 /* MMUtils.swift in Sources */,
 				2CFF28CA1BA01BBF00430A06 /* SCSafariZoomedInLayouter.m in Sources */,
@@ -773,10 +840,12 @@
 				2C088FF21B9E8C4F00872A1D /* BCMagicTransition.m in Sources */,
 				2C851E461BA69F87006E76D7 /* NSTimer+MMExt.m in Sources */,
 				2CFF28D31BA01F9800430A06 /* SCPageLayouter.m in Sources */,
+				2C74228F1C0FDED100239736 /* THSpecificationHeaderView.m in Sources */,
 				2CFF28DA1BA0213900430A06 /* SCPageViewControllerView.m in Sources */,
 				2C851E411BA69F87006E76D7 /* NSArray+MMExt.m in Sources */,
 				2CFF28D71BA0202D00430A06 /* SCPageViewController.m in Sources */,
 				2C851E451BA69F87006E76D7 /* NSString+MMExt.m in Sources */,
+				2C7333B01C0E9130006F4072 /* THSpecificationCell.m in Sources */,
 				2CFF28E51BA0222D00430A06 /* SCEasingFunction.m in Sources */,
 				2C851E3B1BA69F87006E76D7 /* MMTag.m in Sources */,
 				2C851E3C1BA69F87006E76D7 /* MMTable.m in Sources */,
@@ -784,6 +853,7 @@
 				2C851E481BA69F87006E76D7 /* MMUtils.m in Sources */,
 				2CEF12E51B79A221004F87C0 /* MSTools.m in Sources */,
 				2CFF28E71BA0222D00430A06 /* SCWeakObjectWrapper.m in Sources */,
+				2C752E141C0D70FC00325160 /* THSpecificationVC.m in Sources */,
 				2C851E3F1BA69F87006E76D7 /* MMCubeBannerView.swift in Sources */,
 				2CEF12D51B79A0F9004F87C0 /* ASDepthModalViewController.m in Sources */,
 				2C851E431BA69F87006E76D7 /* NSNumber+MMExt.m in Sources */,

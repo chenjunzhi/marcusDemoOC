@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="9059" systemVersion="15B42" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9049"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <collectionReusableView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="U6b-Vx-4bR" customClass="THSpecificationHeaderView">
+            <rect key="frame" x="0.0" y="0.0" width="320" height="40"/>
+            <autoresizingMask key="autoresizingMask"/>
+            <subviews>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NRy-Iq-th6">
+                    <rect key="frame" x="15" y="9" width="290" height="21"/>
+                    <animations/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="21" id="9z9-6I-J30"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                    <color key="textColor" red="0.20000000000000001" green="0.20000000000000001" blue="0.20000000000000001" alpha="1" colorSpace="calibratedRGB"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="oZn-uc-QBT">
+                    <rect key="frame" x="15" y="39" width="290" height="1"/>
+                    <animations/>
+                    <color key="backgroundColor" red="0.8901960784313725" green="0.8901960784313725" blue="0.8901960784313725" alpha="1" colorSpace="calibratedRGB"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="0.5" id="ffm-Dv-4hS"/>
+                    </constraints>
+                </view>
+            </subviews>
+            <animations/>
+            <constraints>
+                <constraint firstAttribute="trailing" secondItem="oZn-uc-QBT" secondAttribute="trailing" constant="15" id="0JF-Mx-loN"/>
+                <constraint firstItem="NRy-Iq-th6" firstAttribute="top" secondItem="U6b-Vx-4bR" secondAttribute="top" constant="9" id="0dt-dy-S9B"/>
+                <constraint firstAttribute="bottom" secondItem="oZn-uc-QBT" secondAttribute="bottom" id="5ik-nH-Knu"/>
+                <constraint firstItem="oZn-uc-QBT" firstAttribute="leading" secondItem="U6b-Vx-4bR" secondAttribute="leading" constant="15" id="Jxg-cU-JgL"/>
+                <constraint firstAttribute="trailing" secondItem="NRy-Iq-th6" secondAttribute="trailing" constant="15" id="Yl2-5f-Oo7"/>
+                <constraint firstItem="NRy-Iq-th6" firstAttribute="leading" secondItem="U6b-Vx-4bR" secondAttribute="leading" constant="15" id="d0V-YG-F6r"/>
+            </constraints>
+            <connections>
+                <outlet property="titleLabel" destination="NRy-Iq-th6" id="nOB-Ud-LRx"/>
+            </connections>
+        </collectionReusableView>
+    </objects>
+</document>

@@ -15,13 +15,15 @@
 @property (strong, nonatomic) MSStarRateView *starRateView;
 @property (weak, nonatomic) IBOutlet UISwitch *switchAnimate;
 @property (weak, nonatomic) IBOutlet UISwitch *switchIncompleteStar;
-
+@property (assign,nonatomic) BOOL test;
+@property (weak, nonatomic) IBOutlet UIWebView *webView;
 @end
 
 @implementation MSStarRateViewDemoVC
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    _test = YES;
     self.title = @"评论星星DEMO";
     _starRateView = [[MSStarRateView alloc]initWithFrame:CGRectMake(0, 0, _starView.bounds.size.width, _starView.bounds.size.height) numberOfStars:5 foregroundImageName:@"star-on.png" backgroundImageName:@"star-off.png"];
 //    _starRateView = [[MSStarRateView alloc]initWithFrame:CGRectMake(0, 0, _starView.bounds.size.width, _starView.bounds.size.height) numberOfStars:5 ];
@@ -48,6 +50,17 @@
 - (IBAction)IncompleteStarChange:(UISwitch *)sender {
     _starRateView.allowIncompleteStar = !sender.on;
     
+}
+- (IBAction)click:(id)sender {
+    NSURL * url;
+    if (_test) {
+        url = [NSURL URLWithString:@"http://news.cnr.cn/native/gd/20151209/t20151209_520738826.shtml?cnr"];
+    }else{
+        url = [NSURL URLWithString:@"http://news.youth.cn/gn/201512/t20151209_7396451.htm"];
+    }
+    _test = !_test;
+    NSURLRequest * urlRequest = [NSURLRequest requestWithURL:url];
+    [_webView loadRequest:urlRequest];
 }
 
 @end
